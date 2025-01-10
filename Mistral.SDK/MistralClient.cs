@@ -7,6 +7,7 @@ using System.Text.Json;
 using Mistral.SDK.Completions;
 using Mistral.SDK.Embeddings;
 using Mistral.SDK.Models;
+using Mistral.SDK.DTOs;
 
 namespace Mistral.SDK
 {
@@ -49,6 +50,7 @@ namespace Mistral.SDK
             HttpClient = SetupClient(client);
             this.Auth = apiKeys.ThisOrDefault();
             Completions = new CompletionsEndpoint(this);
+            Agents = new AgentsEndpoint(this);
             Models = new ModelsEndpoint(this);
             Embeddings = new EmbeddingsEndpoint(this);
         }
@@ -81,6 +83,8 @@ namespace Mistral.SDK
         /// Text generation is the core function of the API. You give the API a prompt, and it generates a completion. The way you “program” the API to do a task is by simply describing the task in plain english or providing a few written examples. This simple approach works for a wide range of use cases, including summarization, translation, grammar correction, question answering, chatbots, composing emails, and much more (see the prompt library for inspiration).
         /// </summary>
         public CompletionsEndpoint Completions { get; }
+
+        public AgentsEndpoint Agents { get; }
 
         /// <summary>
         /// Lists the core models available to the user via API.
