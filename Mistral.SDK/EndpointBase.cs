@@ -32,7 +32,7 @@ namespace Mistral.SDK
         /// Constructor of the api endpoint base, to be called from the constructor of any derived classes.
         /// </summary>
         /// <param name="client"></param>
-        internal EndpointBase(MistralClient client)
+        protected EndpointBase(MistralClient client)
         {
             this.Client = client;
             _client = new Lazy<HttpClient>(GetClient);
